@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
  */
 public class RejtjelezoFrame extends javax.swing.JFrame {
 
-    private static String abc = "aábcdeéfghiíjklmnoóöőpqrstuúüűvwxyz";
+    private static String abc = "aAáÁbBcCdDeEéÉfFgGhHiIíÍjJkKlLmMnNoOóÓöÖőŐpPqQrRsStTuUúÚüÜűŰvVwWxXyYzZ";
     private static String[][] tabulaRecta = tabulaRectaGeneralas();
     private static String vizsgalatEredmeny;
     private static String kulcs;
@@ -21,11 +21,11 @@ public class RejtjelezoFrame extends javax.swing.JFrame {
     
     private static String[][] tabulaRectaGeneralas(){
         
-        String[][] tomb = new String[35][35];
-        for (int i = 0; i < 35; i++) {
+        String[][] tomb = new String[70][70];
+        for (int i = 0; i < 70; i++) {
           tomb[i] = abc.split("");
           String veg = abc.substring(0, 1);
-          String kezdo = abc.substring(1, 35);
+          String kezdo = abc.substring(1, 70);
           abc = kezdo.concat(veg);
         }
         
@@ -62,9 +62,9 @@ public class RejtjelezoFrame extends javax.swing.JFrame {
         
         for(i = 0; i < splitNyers.length; i++){
             for(j = 0; j < tabulaRecta[0].length; j++){
-                if(splitNyers[i].equalsIgnoreCase(tabulaRecta[0][j])){
-                    for(k = 0; k < 35; k++){
-                        if(tabulaRecta[k][0].equalsIgnoreCase(kulcs[i])){
+                if(splitNyers[i].equals(tabulaRecta[0][j])){
+                    for(k = 0; k < 70; k++){
+                        if(tabulaRecta[k][0].equals(kulcs[i])){
                             titkositottSzoveg += tabulaRecta[j][k];
                         }
                     }
@@ -84,9 +84,9 @@ public class RejtjelezoFrame extends javax.swing.JFrame {
         
         for(i = 0; i < kulcs.length; i++){
             for(j = 0; j < tabulaRecta.length; j++){
-                if(kulcs[i].equalsIgnoreCase(tabulaRecta[j][0])){
+                if(kulcs[i].equals(tabulaRecta[j][0])){
                     for(k = 0; k < tabulaRecta[j].length; k++){
-                        if(tabulaRecta[j][k].equalsIgnoreCase(splitTitkositott[i])){
+                        if(tabulaRecta[j][k].equals(splitTitkositott[i])){
                             dekodoltSzoveg += tabulaRecta[0][k];
                         }
                     }
@@ -113,6 +113,12 @@ public class RejtjelezoFrame extends javax.swing.JFrame {
     
     public RejtjelezoFrame() {
         initComponents();
+        /*for (int i = 0; i < tabulaRecta[0].length; i++) {
+            for (int j = 0; j < tabulaRecta[i].length; j++) {
+                System.out.print(tabulaRecta[i][j] + " ");
+            }
+            System.out.println();
+        }*/
     }
 
     /**
